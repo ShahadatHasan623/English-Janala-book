@@ -24,25 +24,62 @@
 
 <body>
     <!-- Header Start here -->
-    <div class="navbar bg-base-100 shadow-sm">
-        <div class="flex-1">
-            <a class="btn btn-ghost text-xl">daisyUI</a>
+    <header>
+        <div class="navbar bg-base-100 shadow-sm px-4">
+
+            <!-- Left Side -->
+            <div class="navbar-start">
+
+                <!-- Mobile Menu Button -->
+                <div class="dropdown lg:hidden">
+                    <label tabindex="0" class="btn btn-ghost">
+                        ☰
+                    </label>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><a class="btn btn-ghost justify-start">FAQ</a></li>
+                        <li><a class="btn btn-ghost justify-start">Learn</a></li>
+                        <li><a class="btn btn-ghost justify-start">Logout</a></li>
+                    </ul>
+                </div>
+
+                <!-- Logo & Title -->
+                <div class="flex items-center gap-2 font-bold text-xl lg:text-2xl">
+                    <h1>English</h1>
+                    <img src="./assets/logo.png" class="w-8 lg:w-10" alt="">
+                    <h1 class="hind-siliguri">জানালা</h1>
+                </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="navbar-end hidden lg:flex">
+                <ul class="menu menu-horizontal px-1 gap-3 items-center">
+
+                    <li>
+                        <a class="btn btn-outline btn-primary">
+                            <img src="./assets/fa-circle-question.png" class="w-4">
+                            FAQ
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="btn btn-outline btn-primary">
+                            <img src="./assets/fa-book-open.png" class="w-4">
+                            Learn
+                        </a>
+                    </li>
+
+                    <li>
+                        <button class="btn btn-outline btn-primary">
+                            <img src="./assets/fa-arrow-right-from-bracket.png" class="w-4">
+                            Logout
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
         </div>
-        <div class="flex-none">
-            <ul class="menu menu-horizontal px-1">
-                <li><a>Link</a></li>
-                <li>
-                    <details>
-                        <summary>Parent</summary>
-                        <ul class="bg-base-100 rounded-t-none p-2">
-                            <li><a>Link 1</a></li>
-                            <li><a>Link 2</a></li>
-                        </ul>
-                    </details>
-                </li>
-            </ul>
-        </div>
-    </div>
+    </header>
     <!-- Header End here  -->
 </body>
 
