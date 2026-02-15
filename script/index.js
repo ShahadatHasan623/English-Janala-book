@@ -7,11 +7,23 @@ const loadLesson = () => {
             displayLession(json.data)
         })
 }
+const removeActive = () => {
+    const lessonsBtn = document.querySelectorAll(".lesson-btn-active")
+    lessonsBtn.forEach(btn => {
+        btn.classList.remove("bg-blue-600", "text-white")
+    })
+}
 const loadLevelWord = (id) => {
     const url = `https://openapi.programming-hero.com/api/level/${id}`
     fetch(url)
         .then(res => res.json())
-        .then((json) => displayWord(json.data))
+        .then((json) => {
+            removeActive()
+            const clickBtn = document.getElementById(`lesson-btn-${id}`)
+            clickBtn.classList.add("bg-blue-600", "text-white")
+            displayWord(json.data)
+        })
+
 }
 
 // {
@@ -44,7 +56,7 @@ const displayWord = (word) => {
             <p>${wordL.word} /${wordL.pronunciation}</p>
             <h2 class="text-xl font-semibold hind-siliguri">"${wordL.meaning ? wordL.meaning : "অর্থ পাওয়া যায় নি"} / ${wordL.pronunciation ? wordL.pronunciation : "pronunciation পাওয়া যায় নি"}"</h2>
             <div class="flex justify-between items-center mt-5">
-                <button class="btn bg-[#37495710]"><i class="fa-solid fa-circle-info fa-lg"></i></button>
+                <button onclick="my_modal_5.showModal()" class="btn bg-[#37495710]"><i class="fa-solid fa-circle-info fa-lg"></i></button>
                 <button class="btn bg-[#37495710]"><i class="fa-solid fa-volume-high z-5 fa-lg"></i></button>
             </div>
         </div>
@@ -61,7 +73,7 @@ const displayLession = (level) => {
         const divBtn = document.createElement('div')
         divBtn.innerHTML = `
          
-         <button onclick=loadLevelWord(${less.level_no}) class="btn btn-outline btn-primary list-none">
+         <button id="lesson-btn-${less.level_no}" onclick=loadLevelWord(${less.level_no}) class="btn btn-outline z-10  btn-primary list-none lesson-btn-active">
              <i class="fa-solid fa-book-open"></i> Lession - ${less.level_no}
          </button>
         `
