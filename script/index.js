@@ -41,21 +41,6 @@ const loadWordDetails = async (id) => {
 
 }
 
-// {
-//     "word": "Cautious",
-//     "meaning": "সতর্ক",
-//     "pronunciation": "কশাস",
-//     "level": 2,
-//     "sentence": "Be cautious while crossing the road.",
-//     "points": 2,
-//     "partsOfSpeech": "adjective",
-//     "synonyms": [
-//         "careful",
-//         "alert",
-//         "watchful"
-//     ],
-//     "id": 3
-// }
 const displayWordDetails = (details) => {
 
     const wordModal = document.getElementById("modal-container")
@@ -80,13 +65,6 @@ const displayWordDetails = (details) => {
     document.getElementById("word_modal").showModal()
 }
 
-// {
-//     "id": 1,
-//     "level": 3,
-//     "word": "Abundant",
-//     "meaning": null,
-//     "pronunciation": "অবানডান্ট"
-// }
 
 const manageSpinner = (status) => {
     if (status == true) {
@@ -150,3 +128,14 @@ const displayLession = (level) => {
 }
 loadLesson()
 
+document.getElementById("input-btn").addEventListener('click', () => {
+    const input = document.getElementById("input-search")
+    const searchValue = input.value.trim().toLowerCase()
+    fetch("https://openapi.programming-hero.com/api/words/all")
+        .then((res) => res.json())
+        .then((data) => {
+            const allowes = data.data
+            const filterWords = allowes.filter((word) => word.word.toLowerCase().includes(searchValue))
+            displayWord(filterWords)
+        })
+})
